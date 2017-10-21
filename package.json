@@ -1,0 +1,59 @@
+{
+  "name": "knowledge_front",
+  "version": "0.1.0",
+  "family": "knowledge",
+  "description": "knowledge_front工程",
+  "private": true,
+  "entry": {
+    "index": "./src/index.jsx"
+  },
+  "dependencies": {
+    "antd": "1.0.0",
+    "babel-plugin-antd": "^0.1.2",
+    "babel-plugin-transform-runtime": "^6.8.0",
+    "babel-runtime": "^6.18.0",
+    "classnames": "^2.2.5",
+    "history": "2.0.1",
+    "jquery": "^3.1.0",
+    "object-assign": "~3.0.0",
+    "rc-queue-anim": "^0.11.9",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-intl": "^2.0.0",
+    "react-prism": "^4.0.0",
+    "react-router": "^2.0.0",
+    "react-tagcloud": "^1.0.0",
+    "site": "^1.3.0"
+  },
+  "devDependencies": {
+    "atool-build": "0.6.x",
+    "babel-cli": "^6.4.0",
+    "babel-core": "6.3.26",
+    "babel-eslint": "~4.0.5",
+    "babel-loader": "6.2.0",
+    "babel-plugin-antd": "0.2.x",
+    "babel-plugin-react-intl": "^2.0.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.3.13",
+    "dora": "0.3.x",
+    "dora-plugin-proxy": "0.6.x",
+    "dora-plugin-webpack": "0.5.x",
+    "es3ify-loader": "~0.1.0",
+    "eslint": "~1.10.3",
+    "eslint-config-airbnb": "~2.0.0",
+    "eslint-plugin-react": "~3.5.1",
+    "history": "2.0.1",
+    "imports-loader": "^0.6.5",
+    "rc-queue-anim": "0.11.9",
+    "rc-tree": "1.1.6",
+    "react-sidenav": "^1.0.4",
+    "url-loader": "^0.5.7"
+  },
+  "scripts": {
+    "dev": "dora --plugins proxy,webpack",
+    "lint": "eslint --ext .js,.jsx src",
+    "build": "atool-build -o ./dist/%npm_package_family%/%npm_package_name%/%npm_package_version%",
+    "validate": "npm ls"
+  }
+}
