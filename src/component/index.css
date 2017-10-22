@@ -1,0 +1,17 @@
+.main_frame {
+  height: 100%;
+  margin: 10px;
+  background-color: white;
+  overflow: scroll;
+}
+.margin_div {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.content_div {
+  text-align: center;
+  margin-top: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+}

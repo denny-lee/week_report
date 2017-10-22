@@ -1,14 +1,14 @@
 {
-  "name": "knowledge_front",
+  "name": "week_report",
   "version": "0.1.0",
-  "family": "knowledge",
-  "description": "knowledge_front工程",
+  "family": "week_report",
+  "description": "周报工程",
   "private": true,
   "entry": {
     "index": "./src/index.jsx"
   },
   "dependencies": {
-    "antd": "1.0.0",
+    "antd": "^2.13.6",
     "babel-plugin-antd": "^0.1.2",
     "babel-plugin-transform-runtime": "^6.8.0",
     "babel-runtime": "^6.18.0",
@@ -53,7 +53,7 @@
   "scripts": {
     "dev": "dora --plugins proxy,webpack",
     "lint": "eslint --ext .js,.jsx src",
-    "build": "atool-build -o ./dist/%npm_package_family%/%npm_package_name%/%npm_package_version%",
+    "build": "atool-build -o ./dist/$npm_package_family/$npm_package_name/$npm_package_version",
     "validate": "npm ls"
   }
 }

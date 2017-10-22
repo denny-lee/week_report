@@ -9,11 +9,28 @@
     
     <script src="https://a.alipayobjects.com/??jquery/jquery/1.11.1/jquery.js" charset="utf-8"></script>
     <script src="https://as.alipayobjects.com/component/??console-polyfill/0.2.2/index.js,es5-shim/4.1.14/es5-shim.js,es5-shim/4.1.14/es5-sham.js,html5shiv/3.7.2/html5shiv.js"></script>
-
+    <style type="text/css">
+      .content {
+        height: 95%;
+        overflow: hidden;
+        background-color: white;
+      }
+      .tail {
+        height: 5%;
+        text-align: center;
+        background-color: white;
+      }
+      .tail span {
+        color: gray;
+      }
+    </style>
     <title>React App</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="content"></div>
+    <div class="tail">
+      <span>Powered by 架构组-LIW 2017.10</span>
+    </div>
   </body>
   <script src="./common.js"></script>
   <script src="./index.js"></script>
