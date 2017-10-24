@@ -9,6 +9,7 @@ import SnippetAdd from './component/SnippetAdd';
 import 'antd/dist/antd.css';
 import './index.less';
 import FaqAdd from "./component/FaqAdd";
+import BackDoor from "./component/BackDoor";
 
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
 	        <Route path="index" component={SnippetSearch} />
 	        <Route path="main/:name" component={SnippetAdd} />
 	        <Route path="done" component={FaqAdd} />
+	        <Route path="backdoor" component={BackDoor} />
 	    </Route>
     </Router>,
   	document.getElementById('root')

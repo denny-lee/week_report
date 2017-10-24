@@ -1,4 +1,4 @@
 module.exports = {
   // Mock 数据返回
-  'GET /users': [{name:'sorrycc'}, {name:'pigcan'}]
+    'POST /users': {'李巍': '服务端', '李智': '服务端', '张小雨': '无线端', '陈亚丽': '测试'}
 };

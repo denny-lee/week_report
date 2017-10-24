@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form, Input, Icon, Button, message} from 'antd';
 import {hashHistory} from 'react-router';
+import req from '../common/Request';
 import './index.css';
 
 const {TextArea} = Input;
@@ -22,15 +23,19 @@ const SnippetAdd = React.createClass({
             if (!err) {
                 this.setState({wait: true});
                 console.log('Received values of form: ', values);
-                message.success("Good Job!", 3);
-                hashHistory.push("/done");
+                const resp = req("/save", values, "POST");
+                if (resp && resp.success) {
+                    message.success("Good Job!", 3);
+                    hashHistory.push("/done");
+                } else {
+                    message.error("Submit Fail.");
+                }
             }
         });
     },
 
     render() {
         const {getFieldDecorator} = this.props.form;
-
 
 
         const formItemLayout = {
@@ -51,9 +56,9 @@ const SnippetAdd = React.createClass({
                             hasFeedback
                         >
                             {getFieldDecorator('thisWeek', {
-                                rules: [{ required: true, message: '请填写本周主要进展!' }],
+                                rules: [{required: true, message: '请填写本周主要进展!'}],
                             })(
-                                <TextArea rows={6} />
+                                <TextArea rows={6}/>
                             )}
                         </FormItem>
                         <FormItem
@@ -62,7 +67,7 @@ const SnippetAdd = React.createClass({
                             hasFeedback
                         >
                             {getFieldDecorator('risk', {
-                                rules: [{ required: true, message: '请填写问题、风险!' }],
+                                rules: [{required: true, message: '请填写问题、风险!'}],
                             })(
                                 <TextArea rows={6}/>
                             )}
@@ -73,7 +78,7 @@ const SnippetAdd = React.createClass({
                             hasFeedback
                         >
                             {getFieldDecorator('nextWeek', {
-                                rules: [{ required: true, message: '请填写下周工作计划!' }],
+                                rules: [{required: true, message: '请填写下周工作计划!'}],
                             })(
                                 <TextArea rows={6}/>
                             )}
@@ -82,10 +87,10 @@ const SnippetAdd = React.createClass({
                             {...formItemLayout}
                             label="一句话心得"
                         >
-                            {getFieldDecorator('gain',{
+                            {getFieldDecorator('gain', {
                                 initialValue: this.state.defaultGain
                             })(
-                                <Input />
+                                <Input/>
                             )}
                         </FormItem>
                         <FormItem>

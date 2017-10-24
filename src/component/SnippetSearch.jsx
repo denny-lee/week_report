@@ -1,6 +1,7 @@
 import React from 'react';
 import {Tag} from 'antd';
 import {hashHistory} from 'react-router';
+import req from '../common/Request';
 import './index.css';
 
 require('antd/lib/tag/style');
@@ -8,9 +9,15 @@ require('antd/lib/tag/style');
 const SnippetSearch = React.createClass({
     getInitialState() {
         return {
-            items: {'李巍': '服务端', '李智': '服务端', '张小雨': '无线端', '陈亚丽': '测试'},
+            items: {},
             color: 'pink,red,orange,green,cyan,blue,purple'
         };
+    },
+    componentWillMount() {
+        const resp = req("/users", {}, "POST");
+        if (resp) {
+            this.setState({items: resp});
+        }
     },
 
     handleClick(name) {
@@ -34,7 +41,7 @@ const SnippetSearch = React.createClass({
                 <div className="margin_div">
                     <h1>HI~ 辛苦了一周，点击自己的名字生成周报吧</h1>
                 </div>
-                <div className="margin_div" style={{'width': '40%','margin': '0 auto'}}>
+                <div className="margin_div" style={{'width': '40%', 'margin': '0 auto'}}>
                     {tags}
                 </div>
             </div>
