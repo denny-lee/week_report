@@ -23,7 +23,9 @@ const SnippetAdd = React.createClass({
             if (!err) {
                 this.setState({wait: true});
                 console.log('Received values of form: ', values);
-                const resp = req("/save", values, "POST");
+                const name = this.props.params.name;
+                const params = Object.assign({name:name.split('-')[0],dep:name.split('-')[1]}, values);
+                const resp = req("/save", params, "POST");
                 if (resp && resp.success) {
                     message.success("Good Job!", 3);
                     hashHistory.push("/done");
@@ -42,7 +44,6 @@ const SnippetAdd = React.createClass({
             labelCol: {span: 4},
             wrapperCol: {span: 20},
         };
-        const name = this.props.params.name;
         return (
             <div>
                 <div className="margin_div">

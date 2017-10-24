@@ -8,40 +8,46 @@ const BackDoor = React.createClass({
         return {
             columns: [{ title: 'Name', dataIndex: 'name', key: 'name' },
                 { title: 'Dep', dataIndex: 'dep', key: 'dep' },
-                { title: 'createGmt', dataIndex: 'date', key: 'address' },
-                { title: 'isDelete', dataIndex: 'isDelete', key: 'isDelete' },
-                { title: 'Action', dataIndex: '', key: 'x', render: (t, r, i) => <a href={"/delete/"+r.id}>Delete</a> }
+                { title: 'createGmt', dataIndex: 'createGmt', key: 'createGmt' },
+                { title: 'isDelete', dataIndex: 'removed', key: 'removed', render: (t, r, i) => <span>{r.removed?'是':'否'}</span> },
+                { title: 'Action', dataIndex: '', key: 'x', render: (t, r, i) => <a onClick={() => this.doDel(r.id)}>Delete</a> }
                 ],
             data: [],
             searchName: ""
         }
     },
-    componentWillMount() {
-        /*const resp = req("/list", {name}, "POST");
-        if (resp) {
-            this.setState({list: resp});
-        }*/
+    doDel(id) {
+        const resp = req('/delete/' + id, {}, 'POST');
+        if (resp && resp.success) {
+            message.success('删除成功！');
+            this.search();
+        } else {
+            message.error('删除失败！');
+        }
     },
-    handleChange(v) {
-        this.setState({searchName:v});
+    handleChange(e) {
+        this.setState({searchName:e.target.value});
     },
     search() {
         const name = this.state.searchName;
         const resp = req("/list", {name}, "POST");
         if (resp) {
-            const data = resp.map((e, i) => {
+            resp.map((e, i) => {
                 e.key = i;
             });
-            this.setState({data});
+            this.setState({data: resp});
         }
     },
     render() {
         return (
             <div className='content_div'>
-                <Input value={this.state.searchName} onChange={this.handleChange} />
-                <Icon onClick={this.search} />
-                <Table columns={columns}
-                       dataSource={data}
+                <div>
+                    <Input style={{width:'20%'}} value={this.state.searchName} onChange={this.handleChange} />
+                    <Icon onClick={this.search} type="search" />
+                </div>
+
+                <Table columns={this.state.columns}
+                       dataSource={this.state.data}
                 />
             </div>
         );

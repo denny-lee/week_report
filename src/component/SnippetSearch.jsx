@@ -21,10 +21,11 @@ const SnippetSearch = React.createClass({
     },
 
     handleClick(name) {
-        console.log(this.state.items[name]);
-        const items = this.items;
-        hashHistory.push('/main/' + name);
-        // window.location = '#/main';
+        const items = this.state.items;
+        hashHistory.push('/main/' + name + "-" + items[name]);
+    },
+    hand() {
+        hashHistory.push('/backdoor');
     },
     render() {
         const color = this.state.color.split(',');
@@ -40,6 +41,7 @@ const SnippetSearch = React.createClass({
             <div>
                 <div className="margin_div">
                     <h1>HI~ 辛苦了一周，点击自己的名字生成周报吧</h1>
+                    <a onClick={this.hand}>a</a>
                 </div>
                 <div className="margin_div" style={{'width': '40%', 'margin': '0 auto'}}>
                     {tags}
