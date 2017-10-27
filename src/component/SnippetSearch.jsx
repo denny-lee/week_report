@@ -35,13 +35,13 @@ const SnippetSearch = React.createClass({
                 lineHeight: '48px',
                 height: '50px',
                 fontSize: '40px'
-            }} color={color[i]} onClick={() => this.handleClick(e)}>{e}</Tag>);
+            }} color={color[i%color.length]} onClick={() => this.handleClick(e)}>{e}</Tag>);
         });
         return (
             <div>
                 <div className="margin_div">
                     <h1>HI~ 辛苦了一周，点击自己的名字生成周报吧</h1>
-                    <a onClick={this.hand}>a</a>
+                    <a onClick={this.hand}>_</a>
                 </div>
                 <div className="margin_div" style={{'width': '40%', 'margin': '0 auto'}}>
                     {tags}
